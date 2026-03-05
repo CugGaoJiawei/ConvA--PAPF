@@ -1,0 +1,32 @@
+seed: 1234
+dataset: "planning-datasets-3d/voxel3d_32.npz"
+val_dataset: "planning-datasets-3d/voxel3d_32.npz"
+logdir: "model/3d"
+map_type: "voxel"
+map_size: 32
+Tmax: 0.15
+logpath: "logs"
+
+encoder:
+  input: 3
+  arch: "UNet3D"
+  depth: 4
+
+params:
+  training: True
+  batch_size: 2
+  num_epochs: 300
+  lr: 0.0001
+  gpu_id: 0
+  w_decay: 0.0005
+  factor: 0.5
+  min_lr: 0.0000001
+  patience: 15
+  map_num: 80
+
+hydra:
+  job:
+    chdir: False
+
+modelConfig:
+  model-save: model
